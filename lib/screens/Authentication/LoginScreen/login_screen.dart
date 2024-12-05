@@ -1,4 +1,5 @@
 import 'package:brogam/screens/Authentication/SignUpScreen/signup_screen.dart';
+import 'package:brogam/screens/Home/HomeScreen/home_screen.dart';
 import 'package:flutter/material.dart';
 import '../../../generated/assets.dart';
 import '../../../services/constants/constants.dart';
@@ -127,7 +128,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: screenHeight * 0.020),
                   ActionButton(
                     backgroundColor: AppColors.primaryColor,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                    },
                     borderColor: AppColors.primaryColor,
                     text: "Sign In",
                     textColor: AppColors.white,

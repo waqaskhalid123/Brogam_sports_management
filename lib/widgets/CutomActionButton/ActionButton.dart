@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../services/constants/constants.dart';
+
 class ActionButton extends StatelessWidget {
   final String text;
   final Color backgroundColor;
@@ -10,17 +11,18 @@ class ActionButton extends StatelessWidget {
   final double? borderRadius;
   final double? paddingHorizontal;
   final double? buttonWidth;
+  final FontWeight? fontweight;
 
-  ActionButton({
-    required this.text,
-    required this.backgroundColor,
-    required this.textColor,
-    required this.borderColor,
-    required this.onPressed,
-    this.borderRadius,
-    this.paddingHorizontal,
-    this.buttonWidth
-  });
+  ActionButton(
+      {required this.text,
+      required this.backgroundColor,
+      required this.textColor,
+      required this.borderColor,
+      required this.onPressed,
+      this.borderRadius,
+      this.paddingHorizontal,
+      this.buttonWidth,
+      this.fontweight});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,11 @@ class ActionButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-            style: TextStyle(fontSize: AppFontSizes.subtitle1, color: textColor, fontFamily: AppFontsFamily.poppins),
+            style: TextStyle(
+                fontSize: AppFontSizes.subtitle1,
+                color: textColor,
+                fontFamily: AppFontsFamily.poppins,
+                fontWeight: fontweight),
           ),
         ),
       ),

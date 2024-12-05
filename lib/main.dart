@@ -1,6 +1,10 @@
+import 'package:brogam/providers/BookingsProvider.dart';
+import 'package:brogam/providers/LocationProvider.dart';
 import 'package:brogam/providers/OnboardingProvider.dart';
-import 'package:brogam/screens/Authentication/OnboardingScreen/SigninOnboardingScreen/signin_onboarding_screen.dart';
+import 'package:brogam/providers/ProfileProvider.dart';
+import 'package:brogam/providers/TicketCounterProvider.dart';
 import 'package:brogam/screens/Authentication/OnboardingScreen/SplashScreen/SplashScreen.dart';
+import 'package:brogam/screens/Home/BookingsScreen/BookingsScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'Providers/SplashProvider.dart';
@@ -19,6 +23,10 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => SplashScreenProvider()),
         ChangeNotifierProvider(create: (_) => PageProvider()),
+        ChangeNotifierProvider(create: (_) => LocationProvider()),
+        ChangeNotifierProvider(create: (_) => TicketCounterProvider()),
+        ChangeNotifierProvider(create: (_) => BookingProvider()),
+        ChangeNotifierProvider(create: (_) => ProfileProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -27,7 +35,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: false,
         ),
-        home: const Splashscreen(),
+        home:  Splashscreen(),
       ),
     );
   }

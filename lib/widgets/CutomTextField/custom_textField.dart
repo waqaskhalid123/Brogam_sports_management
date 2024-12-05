@@ -12,8 +12,12 @@ class CustomField extends StatelessWidget {
   final bool? isNavigate;
   final Function(String)? onChanged;
   final double? height;
-  final int? maxLine; // Optional height parameter
-  final bool? obscureText; // Optional obscureText parameter
+  final int? maxLine;
+  final bool? obscureText;
+  final BorderRadius? borderRadius;
+  final Color? borderColor; // Optional border color parameter
+  final Color? fillColor; // Optional fill color parameter
+  final Color? hintTextColor; // Optional hint text color parameter
 
   CustomField({
     required this.controller,
@@ -26,8 +30,12 @@ class CustomField extends StatelessWidget {
     this.prefixIcon,
     this.isNavigate,
     this.onChanged,
-    this.height, // Optional height parameter
-    this.obscureText, // Optional obscureText parameter
+    this.height,
+    this.obscureText,
+    this.borderRadius,
+    this.borderColor, // Initialize optional borderColor
+    this.hintTextColor, // Initialize optional hintTextColor
+    this.fillColor, // Initialize optional fillColor
   });
 
   @override
@@ -36,8 +44,7 @@ class CustomField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          // color: Colors.red,
-          height: height ?? 55, // Use the height parameter if provided
+          height: height ?? 55,
           child: TextFormField(
             maxLines: maxLine ?? 1,
             minLines: 1,
@@ -45,31 +52,39 @@ class CustomField extends StatelessWidget {
             controller: controller,
             keyboardType: keyboardType,
             onChanged: onChanged,
-            obscureText: obscureText ?? false, // Default to false if not provided
+            obscureText: obscureText ?? false,
             decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(20),
-                hintText: hintText,
-                hintStyle: TextStyle(color: AppColors.lighyGreyColor1, fontFamily: AppFontsFamily.poppins),
-                filled: true,
-                fillColor: AppColors.textFiledColor,
-                // Default border is transparent (no visible border)
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide.none,
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide.none, // No border by default
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25),
-                  borderSide: BorderSide(color: AppColors.primaryColor), // Visible border when focused
-                ),
-                suffixIcon: suffixIcon,
-                suffixIconColor: AppColors.IconColors,
-                errorText: errorText,
-                prefixIcon: prefixIcon,
-                prefixIconColor: AppColors.IconColors
+              contentPadding: EdgeInsets.all(20),
+              hintText: hintText,
+              hintStyle: TextStyle(
+                color: hintTextColor ?? AppColors.lighyGreyColor1,
+                fontFamily: AppFontsFamily.poppins,
+              ),
+              filled: true,
+              fillColor: fillColor ?? AppColors.textFiledColor,
+              border: OutlineInputBorder(
+                borderRadius: borderRadius ?? BorderRadius.circular(25),
+                borderSide: BorderSide(
+                    color:
+                        borderColor ?? Colors.transparent), // Use borderColor
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: borderRadius ?? BorderRadius.circular(25),
+                borderSide: BorderSide(
+                    color:
+                        borderColor ?? Colors.grey[300]!), // Use borderColor
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: borderRadius ?? BorderRadius.circular(25),
+                borderSide: BorderSide(
+                    color: borderColor ??
+                        AppColors.primaryColor), // Use borderColor
+              ),
+              suffixIcon: suffixIcon,
+              suffixIconColor: AppColors.IconColors,
+              errorText: errorText,
+              prefixIcon: prefixIcon,
+              prefixIconColor: AppColors.IconColors,
             ),
           ),
         ),

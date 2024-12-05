@@ -5,9 +5,11 @@ import '../../services/constants/constants.dart';
 class PhoneNumberField extends StatelessWidget {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _countryCodeController =
-  TextEditingController(text: "+1");
+      TextEditingController(text: "+1");
+  final Color? borderColor;
 
   @override
+  PhoneNumberField({super.key, this.borderColor});
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -18,8 +20,9 @@ class PhoneNumberField extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppColors.textFiledColor,
                 borderRadius: BorderRadius.circular(20.0),
+                border: Border.all(color: borderColor ?? Colors.transparent),
               ),
-              padding: const  EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               child: DropdownButton<String>(
                 value: _countryCodeController.text,
                 icon: Icon(Icons.arrow_drop_down),
@@ -30,7 +33,12 @@ class PhoneNumberField extends StatelessWidget {
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
-                    child: Text(value, style:  TextStyle(color: AppColors.lighyGreyColor1, fontFamily: AppFontsFamily.poppins),),
+                    child: Text(
+                      value,
+                      style: TextStyle(
+                          color: AppColors.lighyGreyColor1,
+                          fontFamily: AppFontsFamily.poppins),
+                    ),
                   );
                 }).toList(),
                 underline: const SizedBox.shrink(),
@@ -42,17 +50,19 @@ class PhoneNumberField extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: AppColors.textFiledColor,
                   borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: borderColor ?? Colors.transparent),
                 ),
                 child: TextField(
                   controller: _phoneController,
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
                     hintText: "Phone Number",
-                    hintStyle: TextStyle(color: AppColors.lighyGreyColor1, fontFamily: AppFontsFamily.poppins),
+                    hintStyle: TextStyle(
+                        color: AppColors.lighyGreyColor1,
+                        fontFamily: AppFontsFamily.poppins),
                     border: InputBorder.none,
-                    contentPadding:  const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 16),
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12, vertical: 16),
                   ),
                 ),
               ),
